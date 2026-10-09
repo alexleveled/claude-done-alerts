@@ -1,0 +1,21 @@
+{
+  "name": "done-alerts",
+  "version": "0.1.0",
+  "description": "Claude tells you out loud when it finishes or needs your approval: the project name and a one-line summary of how it went. Free local voice (Kokoro) or Fish Audio.",
+  "author": {
+    "name": "alexleveled",
+    "url": "https://github.com/alexleveled"
+  },
+  "homepage": "https://github.com/alexleveled/claude-done-alerts",
+  "repository": "https://github.com/alexleveled/claude-done-alerts",
+  "license": "MIT",
+  "keywords": ["tts", "voice", "notifications", "alerts", "kokoro", "fish-audio"],
+  "userConfig": {
+    "fish_api_key": {
+      "type": "string",
+      "title": "Fish Audio API key (optional)",
+      "description": "Only for the Fish Audio voice. Leave blank to use the free local voice (Kokoro). Get a key at fish.audio -> API Keys.",
+      "sensitive": true
+    }
+  }
+}
