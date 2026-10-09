@@ -58,11 +58,13 @@ Walk the user through this one step at a time. Ask before installing anything.
 3. **Kokoro:** if `kokoro_model_missing` isn't empty, run `download` (also needed for Fish users, as the fallback when Fish can't be reached, unless they'd rather skip it with `set kokoro_fallback off`). Offer `voices` and `set voice <name>` if they want a different voice than bm_daniel (calm, British, male).
 4. **Fish:** run `set engine fish`. Then the user adds their key, which Claude Code stores in the system's secure credential store, not in a file:
    - Get a key at https://fish.audio → API Keys.
-   - Type `/plugin configure done-alerts@alexleveled` and paste the key (or `/plugin` → Installed → done-alerts → Configure options).
+   - In Claude Code running in a terminal, type `/plugin configure done-alerts@alexleveled` and paste the key into the field the form shows (not into the chat afterwards). Then `/reload-plugins`, or a new session: the key only reaches the alerts after a reload.
+   - The VS Code chat panel has no `/plugin` ("isn't available in this environment"). Tell the user to open VS Code's terminal, run `claude`, do the step there, `/exit`, then `/reload-plugins` in the panel.
+   - `claude plugin configure done-alerts@alexleveled --json` shows whether `fish_api_key` is configured, without showing the value.
    - Never ask the user to paste the key into the chat.
 
    The default voice is Alok (calm, British, male), with Sarah as backup. To use another voice from https://fish.audio/discovery: `set fish_voice <id> <name>`.
-5. Run `test`, end the reply there, and ask in that same reply whether they heard it. If they didn't, run `doctor` on the next turn and read `recent_log`: it says which engine played, or why it didn't. `fish_key_visible_here: false` is normal, since only the hooks receive the key. If a hook never ran at all (no new log line), the plugin may need `/reload-plugins` or a new session.
+5. Run `test`, end the reply there, and ask in that same reply whether they heard it. If they didn't, run `doctor` on the next turn and read `recent_log`: it says which engine played, or why it didn't. `fish_key_visible_here: false` is normal, since only the hooks receive the key. `Fish HTTP 401` means the key reached the alerts but Fish rejected it. "no API key reached the hook" means it isn't set, or the session hasn't been reloaded since. If a hook never ran at all (no new log line), the plugin needs `/reload-plugins` or a new session.
 
 Finish with a short summary: what they'll hear, `/done-alerts:alerts off` to mute, `standard` for fixed phrases only.
 

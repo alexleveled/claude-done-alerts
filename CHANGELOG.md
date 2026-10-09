@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3
+
+- Setup and README: the Fish key has to be entered from Claude Code in a terminal (the VS Code panel has no `/plugin`), and it takes effect after `/reload-plugins`.
+
 ## 0.1.2
 
 - The default Kokoro voice is now bm_daniel (calm, British, male) instead of af_heart. Anyone who picked a voice keeps it.

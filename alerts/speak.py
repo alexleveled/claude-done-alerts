@@ -93,7 +93,7 @@ def _write_wav(path, pcm, sr, channels):
 def fish_speech(mood, spoken, s, cache_ok):
     key = home.fish_key()
     if not key:
-        home.log("engine is fish but no API key reached the hook; set it with /plugin configure done-alerts@alexleveled")
+        home.log("engine is fish but no API key reached the hook; set it with /plugin configure done-alerts@alexleveled (in a terminal), then /reload-plugins")
         return None
     text = f"{mood} {spoken}".strip()
     for v in [s.get("fish_voice"), s.get("fish_backup_voice")]:

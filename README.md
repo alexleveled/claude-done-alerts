@@ -47,7 +47,9 @@ Setup checks for [uv](https://docs.astral.sh/uv/) (the Python tool that runs the
 
 ### Adding a Fish Audio key
 
-Get a key at [fish.audio](https://fish.audio) under API Keys. Then in Claude Code run `/plugin configure done-alerts@alexleveled` and paste it in. (Or `/plugin` → **Installed** → **done-alerts** → **Configure options**.)
+Get a key at [fish.audio](https://fish.audio) under API Keys. Then, in Claude Code running in a terminal, type `/plugin configure done-alerts@alexleveled` and paste the key into the field it shows. Then run `/reload-plugins` (or start a new session) so the alerts pick it up.
+
+Using the VS Code extension? Its chat panel doesn't have `/plugin`. Open VS Code's terminal, run `claude`, do the step above there, `/exit`, then `/reload-plugins` back in the panel. The key is saved for your account, so every session gets it.
 
 Claude Code keeps the key in your system's secure credential store and hands it only to the alert hooks. It never sits in a plain file, and you never have to paste it into the chat.
 
