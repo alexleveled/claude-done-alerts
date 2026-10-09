@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Fixed: after a background agent finished, alerts stayed silent for up to three hours. Newer Claude Code versions record the agent's report as a queued command instead of a user message, so it wasn't being seen.
+- Fixed: a tool's output that happened to contain the words "Async agent launched" counted as a running agent. Only real agent launches count now.
+
 ## 0.1.0
 
 First public release.

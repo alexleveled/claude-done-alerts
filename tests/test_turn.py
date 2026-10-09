@@ -62,6 +62,25 @@ def test_pending_agent_counts_until_reported():
     assert turn.last_turn(entries, now=NOW)[3] == 1
 
 
+def test_agent_reported_as_queued_command():
+    note = "<task-notification><tool-use-id>t1</tool-use-id></task-notification>"
+    base = [user("do it", 300), asst(tool("Agent")),
+            tool_result("Async agent launched successfully", ago=290), asst(text("Started."))]
+    as_attachment = base + [{"type": "attachment", "timestamp": ts(20),
+                             "attachment": {"type": "queued_command", "prompt": note}}]
+    as_queue_op = base + [{"type": "queue-operation", "operation": "enqueue", "timestamp": ts(20),
+                           "content": note}]
+    assert turn.last_turn(as_attachment, now=NOW)[3] == 0
+    assert turn.last_turn(as_queue_op, now=NOW)[3] == 0
+
+
+def test_launch_text_in_other_tool_output_is_not_an_agent():
+    entries = [user("show me the hook", 300), asst(tool("Bash", "b1")),
+               tool_result("source mentions Async agent launched here", tid="b1", ago=290),
+               asst(text("Here it is."))]
+    assert turn.last_turn(entries, now=NOW)[3] == 0
+
+
 def test_old_pending_agent_expires():
     entries = [user("do it", 5 * 3600), asst(tool("Agent")),
                tool_result("Async agent launched successfully", ago=4 * 3600), asst(text("Started."))]

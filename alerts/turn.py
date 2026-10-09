@@ -13,6 +13,7 @@ from pathlib import Path
 VOICE_LINE = re.compile(r"^\s*\U0001F50A\s*(\[[^\]]{1,60}\])?\s*(.+?)\s*$")
 NOTIF_ID = re.compile(r"<tool-use-id>([^<]+)</tool-use-id>")
 EDIT_TOOLS = {"Edit", "Write", "MultiEdit", "NotebookEdit"}
+AGENT_TOOLS = {"Agent", "Task"}
 PENDING_MAX_AGE = 3 * 3600  # an agent that never reports back can't mute a session forever
 
 PHRASES = {
@@ -92,9 +93,20 @@ def last_turn(entries, now=None):
             break
     turn_start = parse_ts(entries[start].get("timestamp")) if entries else None
 
+    agent_calls = {b.get("id") for e in entries if e.get("type") == "assistant" and not e.get("isSidechain")
+                   for b in (e.get("message") or {}).get("content") or []
+                   if isinstance(b, dict) and b.get("type") == "tool_use" and b.get("name") in AGENT_TOOLS}
     launched, reported = {}, set()
     for e in entries:
         if e.get("isSidechain"):
+            continue
+        # Newer Claude Code versions deliver the <task-notification> as a queued command
+        # (an attachment entry plus queue-operation entries), not as a user message.
+        if e.get("type") == "attachment":
+            reported.update(NOTIF_ID.findall(str((e.get("attachment") or {}).get("prompt") or "")))
+            continue
+        if e.get("type") == "queue-operation":
+            reported.update(NOTIF_ID.findall(str(e.get("content") or "")))
             continue
         content = (e.get("message") or {}).get("content")
         if e.get("type") != "user":
@@ -106,7 +118,8 @@ def last_turn(entries, now=None):
                 continue
             if b.get("type") == "text":
                 reported.update(NOTIF_ID.findall(b.get("text", "")))
-            elif b.get("type") == "tool_result" and "Async agent launched" in json.dumps(b.get("content")):
+            elif (b.get("type") == "tool_result" and b.get("tool_use_id") in agent_calls
+                  and "Async agent launched" in json.dumps(b.get("content"))):
                 launched[b.get("tool_use_id")] = parse_ts(e.get("timestamp"))
     now = now or datetime.now(timezone.utc)
     pending = sum(1 for tid, ts in launched.items()
