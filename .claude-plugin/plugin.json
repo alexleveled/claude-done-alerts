@@ -1,6 +1,6 @@
 {
   "name": "done-alerts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Claude tells you out loud when it finishes or needs your approval: the project name and a one-line summary of how it went. Free local voice (Kokoro) or Fish Audio.",
   "author": {
     "name": "alexleveled",

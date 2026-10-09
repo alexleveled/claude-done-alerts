@@ -34,7 +34,7 @@ DEFAULTS = {
                                 # off = silent
     "min_turn_seconds": 20,     # stay quiet for turns shorter than this
     "chime": True,              # a short chime before each alert
-    "kokoro_voice": "af_heart",
+    "kokoro_voice": "bm_daniel",
     "kokoro_speed": 1.0,
     "model": "int8",            # Kokoro model size: int8 (92 MB) | fp16 (177 MB) | full (326 MB)
     "kokoro_fallback": True,    # with engine fish, use Kokoro when Fish can't be reached

@@ -78,7 +78,7 @@ Everything lives in `~/.claude-voice/done-alerts/settings.json`. The commands ab
 | `mode` | `detailed` | `detailed`, `standard` or `off` |
 | `min_turn_seconds` | `20` | turns shorter than this stay quiet. Approval prompts always speak |
 | `chime` | `true` | a short chime before each alert |
-| `kokoro_voice` / `kokoro_speed` | `af_heart` / `1.0` | |
+| `kokoro_voice` / `kokoro_speed` | `bm_daniel` / `1.0` | |
 | `fish_voice` / `fish_backup_voice` | Alok / Sarah | the backup is used if the main voice disappears from the Fish library |
 | `fish_model` | `s2.1-pro` | `s2.1-pro-free` is free while Fish offers it |
 | `kokoro_fallback` | `true` | with Fish selected, use Kokoro when Fish can't be reached |

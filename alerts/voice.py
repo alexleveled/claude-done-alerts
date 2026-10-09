@@ -28,7 +28,7 @@ LANGS = {"a": "en-us", "b": "en-gb", "e": "es", "f": "fr-fr", "h": "hi", "i": "i
          "j": "ja", "p": "pt-br", "z": "cmn"}
 
 ENGLISH_VOICES = {
-    "af_heart": "American, female, warm (default)",
+    "af_heart": "American, female, warm",
     "af_bella": "American, female, bright",
     "af_nicole": "American, female, soft",
     "am_michael": "American, male, steady",
@@ -38,7 +38,7 @@ ENGLISH_VOICES = {
     "bf_isabella": "British, female, warm",
     "bm_george": "British, male, deep",
     "bm_fable": "British, male, storyteller",
-    "bm_daniel": "British, male, calm",
+    "bm_daniel": "British, male, calm (default)",
 }
 
 

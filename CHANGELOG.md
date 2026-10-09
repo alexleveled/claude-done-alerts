@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2
+
+- The default Kokoro voice is now bm_daniel (calm, British, male) instead of af_heart. Anyone who picked a voice keeps it.
+
 ## 0.1.1
 
 - Fixed: after a background agent finished, alerts stayed silent for up to three hours. Newer Claude Code versions record the agent's report as a queued command instead of a user message, so it wasn't being seen.

@@ -55,7 +55,7 @@ Walk the user through this one step at a time. Ask before installing anything.
 2. **Pick the voice.** Ask which they want:
    - **Kokoro** (default): free, runs on their computer, nothing leaves the machine. Needs a one-time 92 MB download. Doesn't act out moods.
    - **Fish Audio**: a more expressive cloud voice that acts out the mood of each line. Needs a Fish Audio account and API key, and costs a fraction of a cent per alert (the fixed phrases are cached, so they're only paid for once).
-3. **Kokoro:** if `kokoro_model_missing` isn't empty, run `download` (also needed for Fish users, as the fallback when Fish can't be reached, unless they'd rather skip it with `set kokoro_fallback off`). Offer `voices` and `set voice <name>` if they want a different voice than af_heart.
+3. **Kokoro:** if `kokoro_model_missing` isn't empty, run `download` (also needed for Fish users, as the fallback when Fish can't be reached, unless they'd rather skip it with `set kokoro_fallback off`). Offer `voices` and `set voice <name>` if they want a different voice than bm_daniel (calm, British, male).
 4. **Fish:** run `set engine fish`. Then the user adds their key, which Claude Code stores in the system's secure credential store, not in a file:
    - Get a key at https://fish.audio → API Keys.
    - Type `/plugin configure done-alerts@alexleveled` and paste the key (or `/plugin` → Installed → done-alerts → Configure options).
