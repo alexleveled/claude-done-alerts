@@ -93,7 +93,7 @@ def _write_wav(path, pcm, sr, channels):
 def fish_speech(mood, spoken, s, cache_ok):
     key = home.fish_key()
     if not key:
-        home.log("engine is fish but no API key reached the hook; set it in /plugin -> done-alerts -> Configure options")
+        home.log("engine is fish but no API key reached the hook; set it with /plugin configure done-alerts@alexleveled")
         return None
     text = f"{mood} {spoken}".strip()
     for v in [s.get("fish_voice"), s.get("fish_backup_voice")]:
@@ -241,7 +241,7 @@ def cmd_set(args):
     home.save_settings(**{key: value})
     extra = ""
     if key == "engine" and value == "fish":
-        extra = (" Fish needs an API key: /plugin -> Installed -> done-alerts -> Configure options."
+        extra = (" Fish needs an API key: /plugin configure done-alerts@alexleveled."
                  " Without one, alerts use Kokoro.")
     return f"{key} set to {value}.{extra}"
 

@@ -58,7 +58,7 @@ Walk the user through this one step at a time. Ask before installing anything.
 3. **Kokoro:** if `kokoro_model_missing` isn't empty, run `download` (also needed for Fish users, as the fallback when Fish can't be reached, unless they'd rather skip it with `set kokoro_fallback off`). Offer `voices` and `set voice <name>` if they want a different voice than af_heart.
 4. **Fish:** run `set engine fish`. Then the user adds their key, which Claude Code stores in the system's secure credential store, not in a file:
    - Get a key at https://fish.audio → API Keys.
-   - Type `/plugin`, open **Installed**, pick **done-alerts**, choose **Configure options**, paste the key.
+   - Type `/plugin configure done-alerts@alexleveled` and paste the key (or `/plugin` → Installed → done-alerts → Configure options).
    - Never ask the user to paste the key into the chat.
 
    The default voice is Alok (calm, British, male), with Sarah as backup. To use another voice from https://fish.audio/discovery: `set fish_voice <id> <name>`.
