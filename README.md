@@ -13,9 +13,9 @@ When Claude needs your approval, it says so: *"Billing service. I need your appr
 - Quick back-and-forth stays quiet. Only turns longer than 20 seconds speak, and you can change that
 - Several sessions finishing at once take turns instead of talking over each other
 
-https://github.com/user-attachments/assets/af35c51b-c8ae-4363-a360-75339b601358
+[![Done Alerts demo: Claude finishes a research task and says so out loud](docs/demo.gif)](https://cdn.jsdelivr.net/gh/alexleveled/claude-done-alerts@main/docs/demo.mp4)
 
-*Claude researches a question, finishes, and says so out loud with a one-line summary. Turn your sound on.*
+*Claude researches a question, finishes, and says so out loud with a one-line summary. The GIF is silent, so tap it for the full video with sound.*
 
 ## Pick a voice
 
